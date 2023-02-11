@@ -1,5 +1,8 @@
-
+const fsPro = require('fs').promises;
 const inquirer = require('inquirer');
+const Circle = require('./lib/circle');
+const Triangle = require('./lib/triangle');
+const Square = require('./lib/square');
 
 const questions = [
   {
@@ -29,6 +32,21 @@ const questions = [
 ]
 
 const prompt = inquirer.createPromptModule();
-prompt(questions).then((response) => {
-  console.log(response);
-})
+prompt(questions).then(async ({text, textColor, shape, shapeColor}) => {
+  if (shape === 'circle') {
+    const circle = new Circle(text, textColor, shapeColor, shape);
+    const svgText = circle.generateSVG();
+    await fsPro.writeFile('./circle-logo.svg', svgText);
+    console.log('Circle svg file successfully generated!');
+  } else if (shape === 'triangle') {
+    const triangle = new Triangle(text, textColor, shapeColor, shape);
+    const svgText = triangle.generateSVG();
+    await fsPro.writeFile('./triangle-logo.svg', svgText);
+    console.log('Triangle svg file successfully generated!');
+  } else if (shape === 'square') {
+    const square = new Square(text, textColor, shapeColor, shape);
+    const svgText = square.generateSVG();
+    await fsPro.writeFile('./square-logo.svg', svgText);
+    console.log('Square svg fiile successfully generated');
+  }
+});
