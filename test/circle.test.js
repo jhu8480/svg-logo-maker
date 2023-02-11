@@ -26,5 +26,10 @@ describe('Circle', () => {
     expect(circle.backgroundColor).toBe(backgroundColor);
   });
 
-  
+  describe('generateSVG() method', () => {
+    it('should generate string for svg file', () => {
+      const circle = new Circle('txt', 'white', 'red', 'circle');
+      expect(circle.generateSVG()).toBe(`<svg width="300" height="200" xmlns="http://www.w3.org/2000/svg"><circle cx="150" cy="100" r="90" fill="red" /><text x="150" y="120" text-anchor="middle" font-size="20" fill="white"><tspan font-family="Times New Roman" font-weight="bold" font-size="4rem">txt</tspan></text></svg>`);
+    })
+  })
 });
