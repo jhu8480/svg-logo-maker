@@ -1,5 +1,9 @@
 # SVG-Logo-Maker
 
+## Walk-through Video
+
+[video](https://www.youtube.com/watch?v=UgAyv6W3NNw)
+
 ## Table of Contents
 
 [License](#license)
